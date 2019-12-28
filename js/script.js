@@ -4,7 +4,7 @@ let money = prompt("Каков Ваш бюджет на месяц?", ""),
     time = prompt("Введите дату в формате YYYY-MM-DD", "");
     
 let appData = {
-  buget: money,
+  budget: money,
   timeData: time,
   expenses: {},
   optionalExpenses: {},
