@@ -1,4 +1,4 @@
-// 'use strict'; 
+'use strict'; 
 
 // let money = prompt("Каков Ваш бюджет на месяц?", ""),
 //     time = prompt("Введите дату в формате YYYY-MM-DD", "");
@@ -121,15 +121,42 @@
 
 // alert(message);
 
-let answer = prompt('Введите название вашего браузера, чтобы мы могли сообщить Вам поддерживаем ли мы этот браузер.', '');
+// const answer = prompt('Введите название вашего браузера, чтобы мы могли сообщить Вам поддерживаем ли мы этот браузер.', '');
 
-if (answer == 'Edge') {
-  alert("Извините, но мы не поддерживаем этот браузер :(");
-} else if (answer == 'FireFox' ||
-    answer == 'Chrome' ||
-    answer == 'Safari' ||
-    answer == 'Opera') {
-  alert("Отлично, мы поддерживаем Ваш браузер!");
-} else {
-  alert('Мы надеемся, что эта страница выглядит хорошо :)');
-}
+// if (answer == 'Edge') {
+//   alert("Извините, но мы не поддерживаем этот браузер :(");
+// } else if (answer == 'FireFox' ||
+//     answer == 'Chrome' ||
+//     answer == 'Safari' ||
+//     answer == 'Opera') {
+//   alert("Отлично, мы поддерживаем Ваш браузер!");
+// } else {
+//   alert('Мы надеемся, что эта страница выглядит хорошо :)');
+// }
+
+
+// const number = +prompt('Введите цифру между 0 и 3', '');
+
+// switch (number) {
+//   case 0:
+//     alert('Вы ввели цифру 0');
+//     break;
+//   case 1:
+//     alert('Вы ввели цифру 1');
+//     break;
+//   case 2:
+//   case 3:
+//     alert('Вы ввели цифру 2 || 3');
+//     break;
+// }
+
+
+// let apple = "1",
+//     pie = "2";
+
+// console.log(+apple + +pie);
+// console.log(apple + pie);
+
+// let userName = prompt('Ваше имя?', ''),
+//     age = prompt('Ваш возраст?', '');
+// alert(`Нихуя себе, ${userName}, тебе ${age} лет!!!`);
