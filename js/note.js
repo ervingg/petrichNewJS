@@ -248,17 +248,73 @@
 //   }
 
 
-let num = +prompt('0-3', '');
+// let num = +prompt('0-3', '');
 
-switch (num) {
-  case 0:
-    console.log("0");
-    break;
-  case 1:
-    console.log("1");
-    break;
-  case 2:
-  case 3:
-    console.log("2 || 3");
-    break;
-}
+// switch (num) {
+//   case 0:
+//     console.log("0");
+//     break;
+//   case 1:
+//     console.log("1");
+//     break;
+//   case 2:
+//   case 3:
+//     console.log("2 || 3");
+//     break;
+// }
+
+
+// let age = prompt('How old are you?', '');
+
+// function checkAge(age) {
+//   return (age > 18) ? true : confirm('Родители разрешили?');
+// }
+
+// function checkAge(age) {
+//   return (age > 18) || confirm('Родители разрешили?');
+// }
+
+
+// function min(a, b) {
+//   if (a > b) {
+//     return b;
+//   } else {
+//     return a;
+//   }
+
+//   //return a < b ? a : b;
+// }
+
+// console.log( min(2, 5) );
+// console.log( min(3, -1) );
+// console.log( min(1, 1) );
+
+
+// function pow(x, n) {
+//   return (n <= 1) ? x ** n : alert('Значение степени введено неверно');
+// }
+
+// let xVessel = +prompt('Придумайте значение для X', ''),
+//     nVessel = +prompt('Придумайте значение показателя степени для N', '');
+
+// alert( pow(xVessel, nVessel) );
+
+
+// let a = 3;
+
+// function addTwo(x) {
+//   let ret = x + 2;
+//   return ret;
+// }
+
+// let b = addTwo(a);
+// console.log(b);
+
+
+let ask = (question, yes, no) => confirm(question) ? yes() : no();
+
+ask(
+  'Вы согласны?',
+  () => alert('Вы согласились.'),
+  () => alert('Вы отменили выполнение.')
+);
