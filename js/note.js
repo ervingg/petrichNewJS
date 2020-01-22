@@ -145,11 +145,11 @@
 //   alert(true);
 // }
 
-//Напишите условие if для проверки,
-//что значение переменной age НЕ находится
-//в диапазоне 14 и 90 включительно.
-//Напишите 2 варианта: первый с использованием оператора НЕ !, 
-//второй – без этого оператора.
+// Напишите условие if для проверки,
+// что значение переменной age НЕ находится
+// в диапазоне 14 и 90 включительно.
+// Напишите 2 варианта: первый с использованием оператора НЕ !, 
+// второй – без этого оператора.
 
 // if (!(age >= 14 && age <= 90)) {
 //   alert(true);
@@ -236,7 +236,7 @@
 
 
 
-//выволит простые числа 
+// выволит простые числа 
 // point:
 //   for (let i = 2; i <= 10; ++i) {
 //     for (let j = 2; j < i; ++j) {
@@ -311,10 +311,137 @@
 // console.log(b);
 
 
-let ask = (question, yes, no) => confirm(question) ? yes() : no();
+// let ask = (question, yes, no) => confirm(question) ? yes() : no();
 
-ask(
-  'Вы согласны?',
-  () => alert('Вы согласились.'),
-  () => alert('Вы отменили выполнение.')
-);
+// ask(
+//   'Вы согласны?',
+//   () => alert('Вы согласились.'),
+//   () => alert('Вы отменили выполнение.')
+// );
+
+
+// let obj = {
+//   width: 10,
+//   height: 10,
+//   bgColor: "red",
+// };
+
+// let user = {
+//   name: "Peter",
+//   age: 25,
+// }
+
+// let allInfo = {};
+
+// console.log(Object.assign(allInfo, obj, user));
+// console.log(allInfo);
+
+// delete obj.width;
+
+// obj.human = true;
+
+// for (let suck in obj) {
+//   console.log('Вот это -> ' + suck + ' имеет значение ' + obj[suck]);
+// }
+
+// console.log(Object.keys(obj).length);
+
+// let info = prompt('Что вы хотите узнать о пользователе?', '');
+// alert( obj[info] ); 
+
+// let user = {};
+// user.name = 'John';
+// user.surname = 'Smith';
+// user.name = 'Pete';
+// delete user.name;
+
+// function isEmpty(obj) {
+//   for (let key in user) {
+//     return false;
+//   } 
+//   return true;
+// }
+// console.log(isEmpty());
+// ////////////
+// let salaries = {
+//   John: 100,
+//   Ann: 160,
+//   Pete: 130,
+// };
+
+// let sum = 0;
+// for (let key in salaries) {
+//   sum += salaries[key];
+// }
+
+// console.log(sum);
+// /////////////
+// let menu = {
+//   width: 200,
+//   height: 300,
+// };
+
+// console.log(menu);
+
+// function multiplyNumeric(obj) {
+//   for (let key in menu) {
+//     console.log('Multiply the value ' + '"' + key + '"' + ' by 2 and get => ' + (menu[key] * 2));
+//   }
+// }
+// multiplyNumeric();
+/////////////
+// let arr = [1, 2, 3, 4, 5];
+
+// arr.pop();
+// arr.push(6);
+// arr.shift();
+// arr.unshift(0);
+
+// for (let i = 0; i < arr.length; i++) {
+//   console.log(arr[i]);
+// }
+
+// arr.forEach(function(item, i, massive) {
+//   console.log(i + ' => ' + item + '. All mass => ' + massive);
+// });
+
+// console.log(arr);
+
+// let newMass = [1, 3, 5, 7, 9];
+// //Получаем ключи массива
+// for (let key in newMass) {
+//   console.log(key);
+// }
+// console.log('--------------');
+// //Получаем значения массива
+// for (const key of newMass) {
+//   console.log(key);
+// }
+////////////////////////////
+// let ans = prompt('Add goods', ''),
+//     arr = [];
+
+// arr = ans.split(',');
+// console.log(arr);
+
+// let items = ["первый", "второй", "третий"],
+//     i = items.join(', ');
+// console.log(items);
+// console.log(i);
+
+// let items = ["первый", "второй", "третий"],
+//     i = items.sort();
+// console.log(items);
+
+// let items = [1, 15, 4],
+//     i = items.sort(numSort);
+// function numSort(a, b) {
+//   return a - b;
+// }
+// console.log(items);
+
+////////////////////////////////////////////
+// let id = Symbol('idDesc');
+
+// alert(id.toString()); //выводит символ с его описанием
+// alert(id.description); //выводит только описание символа 
