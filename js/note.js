@@ -445,3 +445,62 @@
 
 // alert(id.toString()); //выводит символ с его описанием
 // alert(id.description); //выводит только описание символа 
+
+// let a = [1, 2, 3],
+//     b = [1, 2, 3];
+
+// console.log('1 23'[3]);
+
+//////////////////////////////////////////
+let circle = document.getElementById('circle'), //by id
+    div = document.getElementsByTagName('div'), //by tag
+    square = document.getElementsByClassName('square'), //by class
+    selec = document.querySelectorAll('.section .square'), //чтобы не писать отдельно что-то из того что написанно выше для чего-то
+    selec2 = document.querySelector('.square'), //выдаёт 1й элемент
+    tr = document.querySelectorAll('.tr');
+
+// for (let i = 0; i < selec.length; i++) {
+//   tr[i].style.borderBottomColor = 'black';
+// }
+
+// tr.forEach(function(item, i, trs) {
+//   item.style.backgroundColor = 'orange';
+// });
+
+div[0].style.backgroundColor = 'red';
+div[1].style.backgroundColor = 'yellow';
+div[2].style.backgroundColor = 'green';
+div[3].style.borderRadius = '10%';
+div[4].style.borderRadius = '20%';
+div[5].style.borderRadius = '30%';
+div[6].style.borderRadius = '40%';
+
+// let choise = prompt('orange or green?', '');
+
+//   if (choise == 'orange') {
+//     circle.style.backgroundColor = 'orange';
+//   } else if (choise == 'green') {
+//     circle.style.backgroundColor = 'green';
+//   } else {
+//     alert('Sosi pidor! Nevernoe znachenie!');
+//   }
+
+// console.log(circle);
+// console.log(div);
+// console.log(square[0]);
+// console.log(selec[1]);
+// console.log(selec2);
+
+let figure = document.createElement('div'); //записываем тег, который нужно создать
+
+figure.style.width = '100px';
+figure.style.height = '70px';
+figure.style.backgroundColor = 'orange';
+
+figure.classList.add('classExample'); //добавил класс элементу
+
+//ПИШЕТСЯ ТОЛЬКО ДЛЯ РОДИТЕЛЬСКИХ ЭЛЕМЕНТОВ
+// document.body.appendChild(figure); //add to end files of html
+wrapper.removeChild('square[1]');
+
+console.log(figure);
