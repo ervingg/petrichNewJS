@@ -9,6 +9,7 @@ let startCalc = document.getElementById('start')[0],
   incomeValue = document.getElementsByClassName('income-value')[0],
   monthsavingsValue = document.getElementsByClassName('monthsavings-value')[0],
   yearsavingsValue = document.getElementsByClassName('yearsavings-value')[0],
+
   expensesItem = document.querySelectorAll('.expenses-item'),
   expensesItemBtn = document.getElementsByTagName('button')[0],
   optionaExpensesItemBtn = document.getElementsByTagName('button')[1],
@@ -22,18 +23,24 @@ let startCalc = document.getElementById('start')[0],
   monthValue = document.querySelector('.month-value'),
   dayValue = document.querySelector('day-value');
 
-let money,
-  time;
+let money, time;
 
 function start() {
-  money = +prompt("Каков Ваш бюджет на месяц?", "");
+
+}
+start();
+
+startCalc.addEventListener('click', function () {
   time = prompt("Введите дату в формате YYYY-MM-DD", "");
+  money = +prompt("Каков Ваш бюджет на месяц?", "");
 
   while (isNaN(money) || money == "" || money == null) {
     money = +prompt("Каков Ваш бюджет на месяц?", "");
   }
-}
-start();
+  appData.budget = money;
+  appData.timeData = time;
+  budgetValue.textContent = money.toFixed();
+});
 
 let appData = {
   budget: money,
