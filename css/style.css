@@ -1,4 +1,11 @@
-#circle, .div {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* #circle, .div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,4 +45,98 @@ span  {
   font-family: sans-serif;
   font-weight: 900;
 }
+ */
 
+/* BALL */
+/* .area {
+  box-sizing: content-box;
+  position: relative;
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+  border: 10px solid black;
+  background-color: green;
+}
+.ball {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  transition: all 1s;
+} */
+
+/* LIST */
+/* .btn-stop, .list {
+  display: none;
+}
+.btn-stop, .btn-play {
+  color: #13c100;
+  cursor: pointer;
+} */
+
+/* CLOSE BTN */
+/* h3 {
+  margin: 0;
+  padding-bottom: .3em;
+  font-size: 1.1em;
+}
+
+p {
+  margin: 0;
+  padding: 0 0 .5em;
+}
+
+.pane {
+  position: relative;
+  width: 300px;
+  background: #edf5e1;
+  padding: 10px 20px 10px;
+  border-top: solid 2px #c4df9b;
+}
+
+.remove-button {
+  font-size: 110%;
+  color: darkred;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.close-btn-box {
+  position: absolute;
+  right: 10px;
+}
+
+.close-btn {
+  width: 20px;
+  height: 20px;
+}
+
+.close-all {
+  display: none;
+} */
+
+/* SLIDER */
+.slider {
+  width: 400px;
+  height: 200px;
+  overflow: hidden;
+  border: 1px solid gray;
+}
+
+.slider-area {
+  width: 9999px;
+  margin-left: -135px;
+}
+
+.item-box {
+  display: inline-block;
+}
+
+.item {
+  display: block;
+  width: 130px;
+  height: 130px;
+}

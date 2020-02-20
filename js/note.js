@@ -452,12 +452,12 @@
 // console.log('1 23'[3]);
 
 //////////////////////////////////////////
-let circle = document.getElementById('circle'), //by id
-    div = document.getElementsByTagName('div'), //by tag
-    square = document.getElementsByClassName('square'), //by class
-    selec = document.querySelectorAll('.section .square'), //чтобы не писать отдельно что-то из того что написанно выше для чего-то
-    selec2 = document.querySelector('.square'), //выдаёт 1й элемент
-    tr = document.querySelectorAll('.tr');
+// let circle = document.getElementById('circle'), //by id
+//     div = document.getElementsByTagName('div'), //by tag
+//     square = document.getElementsByClassName('square'), //by class
+//     selec = document.querySelectorAll('.section .square'), //чтобы не писать отдельно что-то из того что написанно выше для чего-то
+//     selec2 = document.querySelector('.square'), //выдаёт 1й элемент
+//     tr = document.querySelectorAll('.tr');
 
 // for (let i = 0; i < selec.length; i++) {
 //   tr[i].style.borderBottomColor = 'black';
@@ -467,13 +467,13 @@ let circle = document.getElementById('circle'), //by id
 //   item.style.backgroundColor = 'orange';
 // });
 
-div[0].style.backgroundColor = 'red';
-div[1].style.backgroundColor = 'yellow';
-div[2].style.backgroundColor = 'green';
-div[3].style.borderRadius = '10%';
-div[4].style.borderRadius = '20%';
-div[5].style.borderRadius = '30%';
-div[6].style.borderRadius = '40%';
+// div[0].style.backgroundColor = 'red';
+// div[1].style.backgroundColor = 'yellow';
+// div[2].style.backgroundColor = 'green';
+// div[3].style.borderRadius = '10%';
+// div[4].style.borderRadius = '20%';
+// div[5].style.borderRadius = '30%';
+// div[6].style.borderRadius = '40%';
 
 // let choise = prompt('orange or green?', '');
 
@@ -491,16 +491,276 @@ div[6].style.borderRadius = '40%';
 // console.log(selec[1]);
 // console.log(selec2);
 
-let figure = document.createElement('div'); //записываем тег, который нужно создать
+// let figure = document.createElement('div'); //записываем тег, который нужно создать
 
-figure.style.width = '100px';
-figure.style.height = '70px';
-figure.style.backgroundColor = 'orange';
+// figure.style.width = '100px';
+// figure.style.height = '70px';
+// figure.style.backgroundColor = 'orange';
 
-figure.classList.add('classExample'); //добавил класс элементу
+// figure.classList.add('classExample'); //добавил класс элементу
 
 //ПИШЕТСЯ ТОЛЬКО ДЛЯ РОДИТЕЛЬСКИХ ЭЛЕМЕНТОВ
 // document.body.appendChild(figure); //add to end files of html
-wrapper.removeChild('square[1]');
+// wrapper.removeChild('square[1]');
 
-console.log(figure);
+// console.log(figure);
+
+
+// let circle = document.getElementById('circle'),
+//     div = document.querySelector('.div');
+
+// function hid() {
+//   this.style.visibility = 'hidden';
+// }
+// circle.addEventListener('click', hid);
+
+// circle.addEventListener('mouseenter', function() {
+//   alert('Message');
+// });
+// div.addEventListener('click', function() {
+//   alert('Message2');
+//   this.style.backgroundColor = 'red';
+// });
+
+// function col() {
+//   this.style.backgroundColor = '#00e51a';
+// }
+// function mess() {
+//   alert('Sosi!');
+// }
+// function coord() {
+//   alert("Coordinati: " + event.clientX + ":" + event.clientY);
+
+//   if (event.clientX <= 50) {
+//     alert('DO 50px');
+//   } else {
+//     alert('Bolishe 50px');
+//   }
+// }
+// div.addEventListener('click', col);
+// div.addEventListener('click', mess);
+// div.addEventListener('click', coord);
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   alert("DOM построен"); // а вот так сработает
+// });
+
+// class Sims {
+//   handleEvent(event) {
+//     switch (event.type) {
+//       case 'mousedown':
+//         div.style.backgroundColor = '#00e51a'; 
+//         break;
+//       case 'mouseup':
+//         div.style.backgroundColor = 'blueviolet';
+//         break;
+//       default:
+//         break;
+//     }
+//   }
+// }
+
+// let sims = new Sims();
+// div.addEventListener('mousedown', sims);
+// div.addEventListener('mouseup', sims);
+//////////////////////////////////////
+// let user = {
+//     name: "John"
+//   },
+//   admin = {
+//     name: "Peter"
+//   };
+
+// function sayHi() {
+//   console.log(this.name);
+// }
+
+// user.action = sayHi;
+// admin.action = sayHi;
+
+// user.action();
+// admin.action();
+
+
+//CALCULATOR
+// let calculator = {
+//   read() {
+//     this.a = +prompt('Select first number', '');
+//     this.b = +prompt('Select second number', '');
+//   },
+//   sum() {
+//     return (this.ab = this.a + this.b);
+//   },
+//   mul() {
+//     return (this.AB = this.a * this.b);
+//   }
+// };
+
+// calculator.read();
+// alert(`Сумма чисел ${calculator.a} и ${calculator.b} равняется: ` + calculator.sum() );
+// alert(`Произведение чисел ${calculator.a} и ${calculator.b} равняется: ` + calculator.mul() );
+
+
+///////////////////////////////////////////////////////
+// let ladder = {
+//   step: 0,
+//   up() {
+//     this.step++;
+//     return this;
+//   },
+//   down() {
+//     this.step--;
+//     return this;
+//   },
+//   showStep: function() { // показывает текущую ступеньку
+//     alert(this.step);
+//     return this;
+//   }
+// };
+
+// console.log(ladder.up().up().down().showStep());
+
+
+// function User(name, age) {
+//   this.name = name;
+//   this.age = age;
+// }
+
+// console.log(new User('Ervin', 16));
+// console.log(new User('Dima', 15));
+///////////////////////////////////////////////////
+// function Calculator() {
+
+//   this.read = function() {
+//     this.a = +prompt('Введите значение', '');
+//     this.b = +prompt('Введите значение снова', '');
+//   };
+
+//   this.sum = function() {
+//     return (this.ab = this.a + this.b);
+//   };
+
+//   this.mul = function() {
+//     return (this.AB = this.a * this.b);
+//   };
+// }
+
+// let calculator = new Calculator();
+// calculator.read();
+
+// alert( 'Sum=' + calculator.sum() );
+// alert( 'Sum=' + calculator.mul() );
+////////////////////////////////////
+// function Accumulator(startingValue) {
+//   this.value = startingValue;
+
+//   this.read = function() {
+//     this.value += +prompt('Введите значение', '');
+//   };
+// }
+
+// let accumulator = new Accumulator(1);
+// accumulator.read();
+// accumulator.read();
+// alert(accumulator.value);
+/////////////////////////
+// let word = 'соси хуй пидор';
+// console.log(  word.toUpperCase() );
+// //////////////////////////
+// let num = 3.1293812938129;
+// console.log( num.toFixed(3) );
+////////////////////////////////////
+// console.log(4e-4);
+////////////////////////////////////
+// let num = 2.3521836;
+
+// console.log( typeof( +num.toFixed(3) ) );
+// console.log( typeof( Number( num.toFixed(3) ) ) );
+/////////////////////////////
+// function readNumber() {
+//   let num;
+
+//   do {
+//     num = prompt("Введите число", 0);
+//   } while ( !isFinite(num) );
+
+//   if (num === null || num === '') return null;
+
+//   return +num;
+// }
+
+// alert(`Число: ${readNumber()}`);
+
+// readNumber();
+/////////////////////////////////////
+// let num = '21px';
+// console.log(isFinite(num));
+// console.log(!isFinite(num));
+//////////////////////////////////////
+// let word = 'hello',
+//     word2 = 'H' + word.charAt(1) + word.charAt(2) + word.charAt(3) + word.charAt(4);
+
+// console.log(word2);
+// //////////////////////////////////////
+// let weq = 'Somebody once told me the world is gonna roll me';
+
+// console.log( weq.includes('me') );
+// console.log( weq.startsWith('Some') );
+// console.log( weq.endsWith('me') );
+///////////////////////////////////////////
+//BALL
+// let area = document.querySelectorAll('.area')[0],
+//     ball = document.querySelectorAll('.ball')[0];
+
+// function coord() {
+//   if (event.clientX > 10 && event.clientX < 810 && event.clientY > 10 && event.clientY < 610) {
+//   ball.style.left =  event.clientX - 60 + 'px';
+//   ball.style.top = event.clientY - 60 + 'px';
+//   }
+// }
+
+// area.addEventListener('click', coord);
+////////////////////////////////
+//LIST
+// let btnPlay = document.querySelectorAll('.btn-play')[0],
+//     btnStop = document.querySelectorAll('.btn-stop')[0],
+//     list = document.querySelectorAll('.list')[0];
+
+// btnPlay.addEventListener('click', function() {
+//   btnPlay.style.display = 'none';
+//   btnStop.style.display = 'inline';
+//   list.style.display = 'block';
+// });
+
+// btnStop.addEventListener('click', function() {
+//   btnPlay.style.display = 'inline';
+//   btnStop.style.display = 'none';
+//   list.style.display = 'none';
+// });
+//////////////////////////////////////
+// CLOSE BTN
+// let panel = document.querySelectorAll('.pane'),
+//     btnBox = document.querySelectorAll('.close-btn-box'),
+//     btnClose = document.querySelectorAll('.close-btn');
+
+// let panes = document.querySelectorAll('.pane');
+//     for(let pane of panes) {
+//       pane.insertAdjacentHTML("afterbegin", '<button class="remove-button">[x]</button>');
+//       // кнопка становится первым потомком плитки (pane)
+//       pane.firstChild.onclick = () => pane.remove();
+//     }
+
+// btnClose.addEventListener('click', function() {
+//   panel.style.display = 'none';
+//   btnBox.style.display = 'none';
+//   btnClose.style.display = 'none';
+// });
+///////////////////////////
+//SLIDER
+// let btnLeft = document.querySelector('btn-left'),
+//     btnRight = document.querySelector('btn-right'),
+//     area = document.querySelector('slider-area');
+
+// btnLeft.addEventListener('click', function() {
+//   area.style.marginLeft = '-125px';
+// });

@@ -26,21 +26,14 @@ let startCalc = document.getElementById('start')[0],
 let money, time;
 
 function start() {
-
-}
-start();
-
-startCalc.addEventListener('click', function () {
+  money = +prompt("Ваш бюджет на месяц?", "");
   time = prompt("Введите дату в формате YYYY-MM-DD", "");
-  money = +prompt("Каков Ваш бюджет на месяц?", "");
 
   while (isNaN(money) || money == "" || money == null) {
-    money = +prompt("Каков Ваш бюджет на месяц?", "");
+    money = +prompt("Ваш бюджет на месяц?", "");
   }
-  appData.budget = money;
-  appData.timeData = time;
-  budgetValue.textContent = money.toFixed();
-});
+}
+start();
 
 let appData = {
   budget: money,
