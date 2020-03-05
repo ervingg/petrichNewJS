@@ -764,3 +764,105 @@
 // btnLeft.addEventListener('click', function() {
 //   area.style.marginLeft = '-125px';
 // });
+//////////////////////
+// MOBILE EVENTS
+// touchstart
+// touchmove
+// touchend
+// touchenter
+// touchcancel
+// touchleave
+
+// window.addEventListener('DOMContentLoaded', function() {
+//   let box = document.querySelector('.box');
+
+//   // box.addEventListener('touchstart', function(e) {
+//   //   e.preventDefault();
+//   //   // console.log('Event: touchstart');
+//   //   console.log(e.touches[0].target);
+//   //   // console.log(e.changedTouches);
+//   //   // console.log(e.targetTouches);
+//   // });
+
+//   box.addEventListener('touchmove', function(e) {
+//     e.preventDefault();
+//     console.log(e.touches[0].pageX);
+//     console.log(e.touches[0].pageY);
+//   });
+
+//   // box.addEventListener('touchend', function(e) {
+//   //   e.preventDefault();
+//   //   console.log('Event: touchend');
+//   // });
+// });
+
+// let ans = prompt('Name', ''),
+//     reg = /g/gi;
+
+// console.log( ans.match(reg) );
+////////////////////////////////////
+//СКРИПТЫ И ИХ ВЫПОЛНЕНИЕ
+// let vrem = setTimeout(sayHi, 2000),
+//     vrem2 = setTimeout(function log() {
+//       console.log('HI');
+//       setTimeout(log, 2000);
+//     });
+
+// function sayHi() {
+//   console.log('hi');
+// }
+
+
+// document.addEventListener('click', function(event) {
+//   let id = event.target.dataset.toggleId;
+
+//   if (!id) {
+//     return;
+//   }
+
+//   let elem = document.getElementById(id);
+
+//   elem.hidden = !elem.hidden;
+// });
+
+// WINCLOSE
+// let wind = document.querySelectorAll('.pane'),
+//     btn = document.querySelectorAll('.remove-button'),
+//     cont = document.querySelector('#container');
+
+// cont.addEventListener('click', function(event) {
+//   let target = event.target.className;
+
+//   if (target != 'remove-button') {
+//     return;
+//   } else {
+//     wind.style.display = 'none';
+//   }
+// });  
+
+// cont.onclick = function(event) {
+//   if (event.target.className != 'remove-button') {
+//     return;
+//   }
+
+//   let pane = event.target.closest('.pane');
+//       pane.remove();
+// };
+
+//////////////////////////
+// действия браузера по умол
+// let inText = document.querySelector("#inText");
+
+// inText.onmousedown = function(event) {
+//   return false;
+// }
+/////////////////
+// let btnBox = document.querySelector('.btn-box'),
+//     btn = document.querySelectorAll('button');
+
+document.querySelector('.btn-box').addEventListener('click', function (event) {
+  if (event.target && event.target.tagName == 'BUTTON') {
+    console.log("Здарова тварына!");
+  }
+});
+
