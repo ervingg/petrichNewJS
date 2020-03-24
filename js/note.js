@@ -860,9 +860,21 @@
 // let btnBox = document.querySelector('.btn-box'),
 //     btn = document.querySelectorAll('button');
 
-document.querySelector('.btn-box').addEventListener('click', function (event) {
-  if (event.target && event.target.tagName == 'BUTTON') {
-    console.log("Здарова тварына!");
+//////////////////////////////
+// BUTTONS
+// document.querySelector('.btn-box').addEventListener('click', function (event) {
+//   if (event.target && event.target.tagName == 'BUTTON') {
+//     console.log("Здарова тварына!");
+//   }
+// });
+///////////////////////////////
+let user = {
+  name: 'John',
+  surname: 'Smith',
+  get fullname() {
+    return `${this.name}` + ` ${this.surname}`;
   }
-});
+};
 
+console.log(user.fullname);
+/////////////////////////////////////////////////
