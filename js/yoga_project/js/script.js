@@ -1,91 +1,119 @@
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
 
-  'use strict';
+	'use strict';
 
-  let tab = document.querySelectorAll('.info-header-tab'),
-      info = document.querySelector('.info-header'),
-      tabContent = document.querySelectorAll('.info-tabcontent');
-  
-  function hideTabContent(a) {
-    for (let i = a; i < tabContent.length; i++) {
-      tabContent[i].classList.remove('show');
-      tabContent[i].classList.add('hide');
-    }
-  }
-  hideTabContent(1);
+	let tab = document.querySelectorAll('.info-header-tab'),
+		info = document.querySelector('.info-header'),
+		tabContent = document.querySelectorAll('.info-tabcontent');
 
-  function showTabContent(b) {
-    if (tabContent[b].classList.contains('hide')) {
-      tabContent[b].classList.remove('hide');
-      tabContent[b].classList.add('show');
-    }
-  }
+	function hideTabContent(a) {
+		for (let i = a; i < tabContent.length; i++) {
+			tabContent[i].classList.remove('show');
+			tabContent[i].classList.add('hide');
+		}
+	}
+	hideTabContent(1);
 
-  info.addEventListener('click', function(event) {
-    let target = event.target;
+	function showTabContent(b) {
+		if (tabContent[b].classList.contains('hide')) {
+			tabContent[b].classList.remove('hide');
+			tabContent[b].classList.add('show');
+		}
+	}
 
-    if (target && target.classList.contains('info-header-tab')){
-      for (let i = 0; i < tab.length; i++) {
-        if (target == tab[i]) {
-          hideTabContent(0);
-          showTabContent(i);
-          break;
-        }
-      }
-    }
-  });
+	info.addEventListener('click', function (event) {
+		let target = event.target;
 
-  // TIMER
-  let deadline = '2020-03-13';
+		if (target && target.classList.contains('info-header-tab')) {
+			for (let i = 0; i < tab.length; i++) {
+				if (target == tab[i]) {
+					hideTabContent(0);
+					showTabContent(i);
+					break;
+				}
+			}
+		}
+	});
 
-  function getTimeRemaining(endtime) {
-    let t = Date.parse(endtime) - Date.parse(new Date()),
-        seconds = Math.floor( (t / 1000) % 60),
-        minutes = Math.floor( (t / 1000 / 60) % 60),
-        hours = Math.floor( (t / (1000 * 60 * 60) ) );
-        // Хвостик с часами
-        // hours = Math.floor( (t / 1000 / 60 / 60) % 24),
-        // Дни 
-        // days = Math.floor( (t / (1000 * 60 * 60 * 24) ) );
+	// TIMER
+	let deadline = '2020-03-24';
 
-        return {
-          'total' : t,
-          'hours' : hours,
-          'minutes' : minutes,
-          'seconds' : seconds
-        };
-  }
+	function getTimeRemaining(endtime) {
+		let t = Date.parse(endtime) - Date.parse(new Date()),
+			seconds = Math.floor((t / 1000) % 60),
+			minutes = Math.floor((t / 1000 / 60) % 60),
+			hours = Math.floor((t / (1000 * 60 * 60)));
+		// Хвостик с часами
+		// hours = Math.floor( (t / 1000 / 60 / 60) % 24),
+		// Дни 
+		// days = Math.floor( (t / (1000 * 60 * 60 * 24) ) );
 
-  function setClock(id, endtime) {
-    let timer = document.getElementById(id),
-      hours = timer.querySelector('.hours'),
-      minutes = timer.querySelector('.minutes'),
-      seconds = timer.querySelector('.seconds'),
-      timeInterval = setInterval(updateClock, 1000);
+		return {
+			'total': t,
+			'hours': hours,
+			'minutes': minutes,
+			'seconds': seconds
+		};
+	}
 
-    function updateClock() {
-      let t = getTimeRemaining(endtime);
+	function setClock(id, endtime) {
+		let timer = document.getElementById(id),
+			hours = timer.querySelector('.hours'),
+			minutes = timer.querySelector('.minutes'),
+			seconds = timer.querySelector('.seconds'),
+			timeInterval = setInterval(updateClock, 1000);
 
-      function addZiro(num) {
-        if (num <= 9) {
-          return '0' + num;
-        } else {
-          return num;
-        }
-      }
+		function updateClock() {
+			let t = getTimeRemaining(endtime);
 
-      hours.textContent = addZiro(t.hours);
-      minutes.textContent = addZiro(t.minutes);
-      seconds.textContent = addZiro(t.seconds);
+			function addZiro(num) {
+				if (num <= 9) {
+					return '0' + num;
+				} else {
+					return num;
+				}
+			}
 
-      if (t.total <= 0) {
-        clearInterval(timeInterval);
-        hours.textContent = '00';
-        minutes.textContent = '00';
-        seconds.textContent = '00';
-      }
-    }
-  }
+			hours.textContent = addZiro(t.hours);
+			minutes.textContent = addZiro(t.minutes);
+			seconds.textContent = addZiro(t.seconds);
 
-  setClock('timer', deadline);
+			if (t.total <= 0) {
+				clearInterval(timeInterval);
+				hours.textContent = '00';
+				minutes.textContent = '00';
+				seconds.textContent = '00';
+			}
+		}
+	}
+
+	setClock('timer', deadline);
+
+	//POP-UP
+	let more = document.querySelector('.more'),
+		more2 = document.querySelectorAll('.description-btn'),
+		overlay = document.querySelector('.overlay'),
+		close = document.querySelector('.popup-close');
+
+	more.addEventListener('click', function () {
+		overlay.style.display = 'block';
+		this.classList.add('more-splash');
+		document.body.style.overflow = 'hidden';
+	});
+
+	more2.forEach(function (elem) {
+		elem.addEventListener('click', function () {
+			overlay.style.display = 'block';
+			this.classList.add('more-splash');
+			document.body.style.overflow = 'hidden';
+		});
+	});
+
+	close.addEventListener('click', function () {
+		overlay.style.display = 'none';
+		more.classList.remove('more-splash');
+		more2.classList.remove('more-splash');
+		document.body.style.overflow = '';
+	});
+
 });
