@@ -868,13 +868,13 @@
 //   }
 // });
 ///////////////////////////////
-let user = {
-  name: 'John',
-  surname: 'Smith',
-  get fullname() {
-    return `${this.name}` + ` ${this.surname}`;
-  }
-};
+// let user = {
+//   name: 'John',
+//   surname: 'Smith',
+//   get fullname() {
+//     return `${this.name}` + ` ${this.surname}`;
+//   }
+// };
 
-console.log(user.fullname);
+// console.log(user.fullname);
 /////////////////////////////////////////////////
