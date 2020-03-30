@@ -878,3 +878,61 @@
 
 // console.log(user.fullname);
 /////////////////////////////////////////////////
+// let arr = ['ervin', 'oleg'];
+
+// let [first, second] = arr;
+
+// console.log(arr);
+// console.log(first);
+// console.log(second);
+//////////////////////////////////////
+// let options = {
+//   size: {
+//     width: 100,
+//     height: 200
+//   },
+//   items: ["Cake", "Donut"],
+//   extra: true
+// };
+
+// let {
+//   size: { 
+//     width,
+//     height
+//   },
+//   items: [item1, item2], 
+//   title = "Menu"
+// } = options;
+
+// alert(title);  
+// alert(width); 
+// alert(height);
+// alert(item1);  
+// alert(item2);
+//////////////////////////////////////
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  sayName() {
+    console.log(`Person ${this.name} said his name`);
+  }
+}
+
+const john = new Person('John');
+john.sayName(); // Person John said his name
+
+class GreatPerson extends Person {
+  constructor(name, phrase) {
+    super(name); //super вызывает конструктор родителя Person
+    this.phrase = phrase;
+  }
+  sayPhrase() {
+    console.log(`${this.name} says: "${this.phrase}"`);
+  }
+}
+
+const jane = new Person('Jane', 'Hello, World!');
+jane.sayName(); // Person Jane said his name
+jane.sayPhrase(); // Jane says: "Hello, World!"
