@@ -1,0 +1,38 @@
+.main {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+}
+.currency {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+#uah:focus:read-only, #usd:focus:read-only{
+  outline: none;
+}
+
+.uah, .usd {
+  position: absolute;
+  transition: .3s;
+}
+.uah {
+  top: 0;
+}
+.usd {
+  top: 90px;
+}
+.refresh {
+  position: absolute;
+  right: 0;
+  top: 90px;
+  margin-top: -25px;
+}
+.refresh:hover {
+  transition: .5s;
+  transform: rotateZ(-25deg);
+}
