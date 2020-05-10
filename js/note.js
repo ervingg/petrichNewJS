@@ -910,29 +910,38 @@
 // alert(item1);  
 // alert(item2);
 //////////////////////////////////////
-class Person {
-  constructor(name) {
-    this.name = name;
-  }
+// class Person {
+//   constructor(name) {
+//     this.name = name;
+//   }
 
-  sayName() {
-    console.log(`Person ${this.name} said his name`);
-  }
-}
+//   sayName() {
+//     console.log(`Person ${this.name} said his name`);
+//   }
+// }
 
-const john = new Person('John');
-john.sayName(); // Person John said his name
+// const john = new Person('John');
+// john.sayName(); // Person John said his name
 
-class GreatPerson extends Person {
-  constructor(name, phrase) {
-    super(name); //super вызывает конструктор родителя Person
-    this.phrase = phrase;
-  }
-  sayPhrase() {
-    console.log(`${this.name} says: "${this.phrase}"`);
-  }
-}
+// class GreatPerson extends Person {
+//   constructor(name, phrase) {
+//     super(name); //super вызывает конструктор родителя Person
+//     this.phrase = phrase;
+//   }
+//   sayPhrase() {
+//     console.log(`${this.name} says: "${this.phrase}"`);
+//   }
+// }
 
-const jane = new Person('Jane', 'Hello, World!');
-jane.sayName(); // Person Jane said his name
-jane.sayPhrase(); // Jane says: "Hello, World!"
+// const jane = new Person('Jane', 'Hello, World!');
+// jane.sayName(); // Person Jane said his name
+// jane.sayPhrase(); // Jane says: "Hello, World!"
+////////////////////////////////////////////////////////
+// let values = ["Hare", "Krishna", "Hare", "Krishna",
+//   "Krishna", "Krishna", "Hare", "Hare", ":-O"
+// ];
+
+// let set = new Set(values);
+// console.log(set.keys());
+
+
