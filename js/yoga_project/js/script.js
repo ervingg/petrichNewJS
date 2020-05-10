@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function () {
 	});
 
 	// TIMER
-	let deadline = '2020-03-24';
+	let deadline = '2020-05-14';
 
 	function getTimeRemaining(endtime) {
 		let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -109,11 +109,110 @@ window.addEventListener('DOMContentLoaded', function () {
 		});
 	});
 
-	close.addEventListener('click', function () {
+	close.addEventListener('click', function (elem) {
 		overlay.style.display = 'none';
 		more.classList.remove('more-splash');
-		more2.classList.remove('more-splash');
+		more2[0].classList.remove('more-splash');
 		document.body.style.overflow = '';
+
+		elem.forEach(function (elem) {
+			elem.addEventListener('click', function () {
+				more2.classList.remove('more-splash');
+			});
+		});
 	});
 
+
+	//FORM
+	let message = {
+		loading: 'Загрузка...',
+		success: 'Спасибо! Скоро мы с вами свяжемся!',
+		failure: 'Что-то пошло не так...',
+	};
+
+	let form = document.querySelector('.main-form'),
+		input = form.getElementsByTagName('input'),
+		statusMessage = document.createElement('div');
+
+	statusMessage.classList.add('status');
+
+	form.addEventListener('submit', function (event) {
+		event.preventDefault();
+		form.appendChild(statusMessage);
+
+		let request = new XMLHttpRequest();
+		request.open('POST', 'server.php');
+		// request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+		let formData = new FormData(form);
+
+		let obj = {};
+		formData.forEach(function (value, key) {
+			obj[key] = value;
+		});
+		let json = JSON.stringify(obj);
+
+
+		request.send(json);
+		// request.send(formData);
+
+		request.addEventListener('readystatechange', function () {
+			if (request.readyState < 4) {
+				statusMessage.innerHTML = message.loading;
+			} else if (request.readyState === 4 && request.status == 200) {
+				statusMessage.innerHTML = message.success;
+			} else {
+				statusMessage.innerHTML = message.failure;
+			}
+		});
+
+		for (let i = 0; i < input.length; i++) {
+			input[i].value = '';
+		}
+	});
+
+
+	//FORM FOOTER
+	let formFooter = document.querySelector('#form'),
+		inputs = formFooter.getElementsByTagName('input'),
+		btn = formFooter.querySelector('#btn'),
+		statusMessageFooter = document.createElement('div');
+
+	statusMessageFooter.classList.add('status');
+	statusMessageFooter.style.color = '#fff';
+	statusMessageFooter.style.marginTop = '10px';
+
+	formFooter.addEventListener('submit', function (event) {
+		event.preventDefault();
+		btn.before(statusMessageFooter);
+
+		let request = new XMLHttpRequest();
+		request.open('POST', 'server.php');
+		request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+		let formData = new FormData(formFooter);
+
+		let obj = {};
+		formData.forEach(function (value, key) {
+			obj[key] = value;
+		});
+		let json = JSON.stringify(obj);
+
+		request.send(json);
+
+		request.addEventListener('readystatechange', function () {
+			if (request.readyState < 4) {
+				statusMessageFooter.innerHTML = message.loading;
+			} else if (request.readyState === 4 && request.status == 200) {
+				statusMessageFooter.innerHTML = message.success;
+			} else {
+				statusMessageFooter.innerHTML = message.failure;
+			}
+		});
+
+		for (let i = 0; i < inputs.length; i++) {
+			inputs[i].value = '';
+		}
+	});
 });
