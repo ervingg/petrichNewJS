@@ -43,10 +43,6 @@ window.addEventListener('DOMContentLoaded', function () {
 			seconds = Math.floor((t / 1000) % 60),
 			minutes = Math.floor((t / 1000 / 60) % 60),
 			hours = Math.floor((t / (1000 * 60 * 60)));
-		// Хвостик с часами
-		// hours = Math.floor( (t / 1000 / 60 / 60) % 24),
-		// Дни 
-		// days = Math.floor( (t / (1000 * 60 * 60 * 24) ) );
 
 		return {
 			'total': t,
@@ -86,7 +82,6 @@ window.addEventListener('DOMContentLoaded', function () {
 			}
 		}
 	}
-
 	setClock('timer', deadline);
 
 	//POP-UP
@@ -122,97 +117,87 @@ window.addEventListener('DOMContentLoaded', function () {
 		});
 	});
 
-
-	//FORM
+	//FORMS
 	let message = {
 		loading: 'Загрузка...',
 		success: 'Спасибо! Скоро мы с вами свяжемся!',
 		failure: 'Что-то пошло не так...',
+		clear: '',
 	};
 
 	let form = document.querySelector('.main-form'),
 		input = form.getElementsByTagName('input'),
-		statusMessage = document.createElement('div');
+		statusMessage = document.createElement('div'),
 
-	statusMessage.classList.add('status');
-
-	form.addEventListener('submit', function (event) {
-		event.preventDefault();
-		form.appendChild(statusMessage);
-
-		let request = new XMLHttpRequest();
-		request.open('POST', 'server.php');
-		// request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-
-		let formData = new FormData(form);
-
-		let obj = {};
-		formData.forEach(function (value, key) {
-			obj[key] = value;
-		});
-		let json = JSON.stringify(obj);
-
-
-		request.send(json);
-		// request.send(formData);
-
-		request.addEventListener('readystatechange', function () {
-			if (request.readyState < 4) {
-				statusMessage.innerHTML = message.loading;
-			} else if (request.readyState === 4 && request.status == 200) {
-				statusMessage.innerHTML = message.success;
-			} else {
-				statusMessage.innerHTML = message.failure;
-			}
-		});
-
-		for (let i = 0; i < input.length; i++) {
-			input[i].value = '';
-		}
-	});
-
-
-	//FORM FOOTER
-	let formFooter = document.querySelector('#form'),
+		formFooter = document.querySelector('#form'),
 		inputs = formFooter.getElementsByTagName('input'),
 		btn = formFooter.querySelector('#btn'),
 		statusMessageFooter = document.createElement('div');
+
+	statusMessage.classList.add('status');
 
 	statusMessageFooter.classList.add('status');
 	statusMessageFooter.style.color = '#fff';
 	statusMessageFooter.style.marginTop = '10px';
 
-	formFooter.addEventListener('submit', function (event) {
-		event.preventDefault();
-		btn.before(statusMessageFooter);
+	function sendForm(elem) {
+		elem.addEventListener('submit', function (e) {
+			e.preventDefault();
 
-		let request = new XMLHttpRequest();
-		request.open('POST', 'server.php');
-		request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-
-		let formData = new FormData(formFooter);
-
-		let obj = {};
-		formData.forEach(function (value, key) {
-			obj[key] = value;
-		});
-		let json = JSON.stringify(obj);
-
-		request.send(json);
-
-		request.addEventListener('readystatechange', function () {
-			if (request.readyState < 4) {
-				statusMessageFooter.innerHTML = message.loading;
-			} else if (request.readyState === 4 && request.status == 200) {
-				statusMessageFooter.innerHTML = message.success;
-			} else {
-				statusMessageFooter.innerHTML = message.failure;
+			if (elem === form) {
+				elem.appendChild(statusMessage);
 			}
-		});
 
-		for (let i = 0; i < inputs.length; i++) {
-			inputs[i].value = '';
-		}
-	});
+			btn.before(statusMessageFooter);
+
+			let formData = new FormData(elem);
+
+			function postData(data) {
+				return new Promise(function (resolve, reject) {
+					let request = new XMLHttpRequest();
+					request.open('POST', 'server.php');
+					request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+					request.addEventListener('readystatechange', function () {
+						if (request.readyState < 4) {
+							resolve();
+						} else if (request.readyState === 4) {
+							if (request.status < 300 && request.status == 200) {
+								resolve();
+							} else {
+								reject();
+							}
+						}
+					});
+					request.send(data);
+				});
+			} //End postData
+
+			function clearInput() {
+				for (let i = 0; i < input.length; i++) {
+					input[i].value = '';
+				}
+			}
+
+			function clearInputFooter() {
+				for (let i = 0; i < inputs.length; i++) {
+					inputs[i].value = '';
+				}
+			}
+
+			postData(formData)
+				.then(() => statusMessage.innerHTML = message.loading)
+				.then(() => statusMessage.innerHTML = message.success)
+				.then(() => setTimeout(() => statusMessage.innerHTML = message.clear, 5000))
+				.then(() => statusMessageFooter.innerHTML = message.loading)
+				.then(() => statusMessageFooter.innerHTML = message.success)
+				.then(() => setTimeout(() => statusMessageFooter.innerHTML = message.clear, 5000))
+				.catch(() => statusMessage.innerHTML = message.failure)
+				.catch(() => statusMessageFooter.innerHTML = message.failure)
+				.then(clearInput)
+				.then(clearInputFooter);
+		});
+	}
+	sendForm(form);
+	sendForm(formFooter);
 });
