@@ -194,7 +194,7 @@ p {
 
 
 /* делегирование */
-.btn-box {
+/* .btn-box {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -205,4 +205,4 @@ button {
   width: 100px;
   height: 50px;
   background-color: lightgreen;
-}
+} */
