@@ -944,4 +944,43 @@
 // let set = new Set(values);
 // console.log(set.keys());
 
+class Square {
+  constructor(width, height, color) {
+    this.width = width;
+    this.height = height;
+    this.color = color;
+  }
 
+  showSettings() {
+    console.log(`
+    Width: ${this.width}; 
+    Height: ${this.height}; 
+    Color: ${this.color}`);
+  }
+}
+
+class AnotherSquare extends Square {
+  constructor(width, height, color, borderRadius) {
+    super(width, height, color);
+    this.width = width;
+    this.height = height;
+    this.color = color;
+    this.borderRadius = borderRadius;
+  }
+
+  showNewSettings() {
+    console.log(`
+    ${this.width}
+    ${this.height}
+    ${this.color}
+    ${this.borderRadius}
+    `);
+  }
+}
+
+const squareAciton = new Square(10, 10, 'lightgreen');
+const squareNewAction = new AnotherSquare(15, 20, 'red', '100%');
+
+squareAciton.showSettings();
+squareNewAction.showNewSettings();
+// squareNewAction.showSettings();
