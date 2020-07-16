@@ -944,43 +944,74 @@
 // let set = new Set(values);
 // console.log(set.keys());
 
-class Square {
-  constructor(width, height, color) {
-    this.width = width;
-    this.height = height;
-    this.color = color;
-  }
+////////////////////////////////////////////////////////////
+// class Square {
+//   constructor(width, height, color) {
+//     this.width = width;
+//     this.height = height;
+//     this.color = color;
+//   }
 
-  showSettings() {
-    console.log(`
-    Width: ${this.width}; 
-    Height: ${this.height}; 
-    Color: ${this.color}`);
-  }
-}
+//   showSettings() {
+//     console.log(`
+//     Width: ${this.width}; 
+//     Height: ${this.height}; 
+//     Color: ${this.color}`);
+//   }
+// }
 
-class AnotherSquare extends Square {
-  constructor(width, height, color, borderRadius) {
-    super(width, height, color);
-    this.width = width;
-    this.height = height;
-    this.color = color;
-    this.borderRadius = borderRadius;
-  }
+// class AnotherSquare extends Square {
+//   constructor(width, height, color, borderRadius) {
+//     super(width, height, color);
+//     this.width = width;
+//     this.height = height;
+//     this.color = color;
+//     this.borderRadius = borderRadius;
+//   }
 
-  showNewSettings() {
-    console.log(`
-    ${this.width}
-    ${this.height}
-    ${this.color}
-    ${this.borderRadius}
-    `);
-  }
-}
+//   showNewSettings() {
+//     console.log(`
+//     ${this.width}
+//     ${this.height}
+//     ${this.color}
+//     ${this.borderRadius}
+//     `);
+//   }
+// }
 
-const squareAciton = new Square(10, 10, 'lightgreen');
-const squareNewAction = new AnotherSquare(15, 20, 'red', '100%');
+// const squareAciton = new Square(10, 10, 'lightgreen');
+// const squareNewAction = new AnotherSquare(15, 20, 'red', '100%');
 
-squareAciton.showSettings();
-squareNewAction.showNewSettings();
+// squareAciton.showSettings();
+// squareNewAction.showNewSettings();
 // squareNewAction.showSettings();
+///////////////////////////////////////////////////////////////////////////////
+
+// console.log('Запрос данных...');
+
+// const req = new Promise(function (resolve, reject) {
+//   setTimeout(() => {
+//     console.log('Подготовка данных...');
+
+//     const product = {
+//       name: 'TV',
+//       price: 2000
+//     };
+
+//     resolve(product);
+//   }, 2000);
+// });
+
+// req.then((product) => {
+//   new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       product.status = 'order';
+//       resolve(product);
+//     }, 2000);
+//   });
+// }).then(data => {
+//   data.modify = true;
+//   return data;
+// }).then(data => {
+//   console.log(data);
+// });
