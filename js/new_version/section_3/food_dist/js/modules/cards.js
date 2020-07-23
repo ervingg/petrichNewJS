@@ -1,3 +1,7 @@
+import {
+  getResource
+} from '../services/services';
+
 function cards() {
   // MENU
   class MenuCard {
@@ -41,23 +45,23 @@ function cards() {
     }
   }
 
-  // const getResource = async (url) => {
-  //   const res = await fetch(url);
-
-  //   if (!res.ok) {
-  //     throw new Error(`Could not fatch ${url}, status: ${res.status}`);
-  //   }
-
-  //   return await res.json();
-  // };
-
+  // ЕСЛИ ЕСТЬ СЕРВЕР/ДОМЕН
   // getResource('http://localhost:3000/menu')
   //   .then(data => {
-  //     data.forEach(({img, altimg, title, descr, price}) => {
+  //     data.forEach(({
+  //       img,
+  //       altimg,
+  //       title,
+  //       descr,
+  //       price
+  //     }) => {
   //       new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
   //     });
   //   });
 
+  //тут был getResource, который теперь в services.js
+
+  // ЕСЛИ НЕТ СЕРВЕРА/ДОМЕНА
   new MenuCard(
     "img/tabs/vegy.jpg",
     "vegy",
@@ -89,4 +93,5 @@ function cards() {
   ).render();
 }
 
-module.exports = cards;
+// module.exports = cards;
+export default cards;
