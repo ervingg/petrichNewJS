@@ -17,14 +17,13 @@ const Header = styled.div`
     color: grey;
   }
 `;
-
 //в h1 (можно юзать условия) color: ${props => props.colored ? 'red' : 'black'}
 
-const AppHeader = () => {
+const AppHeader = ({liked, allPosts}) => {
   return (
     <Header colored>
       <h1>Ervin Khamoido</h1>
-      <h2>5 posts, like 0</h2>
+      <h2>{allPosts} posts, like {liked}</h2>
     </Header>
   )
 }

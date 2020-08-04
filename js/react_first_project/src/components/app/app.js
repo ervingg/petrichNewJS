@@ -26,22 +26,27 @@ export default class App extends Component {
       data: [{
           label: "Going go learn React",
           important: true,
+          like: false,
           id: 1
         },
         {
           label: "Than is so good",
           important: false,
+          like: false,
           id: 2
         },
         {
           label: "I need a break...",
           important: false,
+          like: false,
           id: 3
         }
       ]
     };
     this.deleteItem = this.deleteItem.bind(this);
     this.addItem = this.addItem.bind(this);
+    this.onToggleImportant = this.onToggleImportant.bind(this);
+    this.onToggleLiked = this.onToggleLiked.bind(this);
 
     this.maxId = 4;
   }
@@ -50,10 +55,11 @@ export default class App extends Component {
     this.setState(({data}) => {
       const index = data.findIndex(elem => elem.id === id);
 
-      const before = data.slice(0, index);
-      const after = data.slice(index + 1);
-
-      const newArr = [...before, ...after];
+      // const before = data.slice(0, index);
+      // const after = data.slice(index + 1);
+      // const newArr = [...before, ...after];
+      //OR
+      const newArr = [...data.slice(0, index), ...data.slice(index + 1)];
 
       return {
         data: newArr
@@ -76,10 +82,51 @@ export default class App extends Component {
     })
   }
 
+  onToggleImportant(id) {
+    this.setState(({data}) => {
+      const index = data.findIndex(elem => elem.id === id);
+
+      const old = data[index];
+      const newItem = {
+        ...old,
+        important: !old.important
+      }; // Так как important идёт после ...old, то применённые изменения на important применятся на ...old
+
+      const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
+
+      return {
+        data: newArr
+      }
+    })
+  }
+
+  onToggleLiked(id) {
+    this.setState(({data}) => {
+      const index = data.findIndex(elem => elem.id === id);
+
+      const old = data[index];
+      const newItem = {...old, like: !old.like}; // Так как like идёт после ...old, то применённые изменения на like применятся на ...old
+
+      const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
+
+      return {
+        data: newArr
+      }
+    })
+  }
+
   render() {
+    const {data} = this.state;
+
+    const liked = data.filter(item => item.like).length;
+    const allPosts = data.length;
+
     return (
       <AppBlock>
-        <AppHeader/>
+        <AppHeader
+          liked={liked}
+          allPosts={allPosts} 
+        />
         <div className="search-panel d-flex">
           <SearchPanel/>
           <PostStatusFilter/>
@@ -87,6 +134,8 @@ export default class App extends Component {
         <PostList 
           posts={this.state.data}
           onDelete={this.deleteItem}
+          onToggleImportant={this.onToggleImportant}
+          onToggleLiked={this.onToggleLiked}
         />
         <PostAddForm onAdd={this.addItem}/>
       </AppBlock>
