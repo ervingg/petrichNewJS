@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import AppHeader from '../app-header';
 import SearchPanel from '../search-panel';
@@ -14,41 +14,82 @@ const AppBlock = styled.div`
   max-width: 800px;
 `;
 
-const StyledAppBlock = styled(AppBlock)`
-  background-color: gray;
-`;
+// const StyledAppBlock = styled(AppBlock)`
+//   background-color: gray;
+// `;
 
-const App = () => {
+export default class App extends Component {
 
-  const data = [
-    {
-      label: "Going go learn React", 
-      important: true
-    },
-    {
-      label: "Than is so good", 
-      important: false
-    },
-    {
-      label: "I need a break...", 
-      important: false
-    },
-    {
-      
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [{
+          label: "Going go learn React",
+          important: true,
+          id: 1
+        },
+        {
+          label: "Than is so good",
+          important: false,
+          id: 2
+        },
+        {
+          label: "I need a break...",
+          important: false,
+          id: 3
+        }
+      ]
+    };
+    this.deleteItem = this.deleteItem.bind(this);
+    this.addItem = this.addItem.bind(this);
+
+    this.maxId = 4;
+  }
+
+  deleteItem(id) {
+    this.setState(({data}) => {
+      const index = data.findIndex(elem => elem.id === id);
+
+      const before = data.slice(0, index);
+      const after = data.slice(index + 1);
+
+      const newArr = [...before, ...after];
+
+      return {
+        data: newArr
+      }
+    });
+  }
+
+  addItem(body) {
+    const newItem = {
+      label: body,
+      important: false,
+      id: this.maxId++
     }
-  ];
 
-  return (
-      <StyledAppBlock>
+    this.setState(({data}) => {
+      const newArr = [...data, newItem];
+      return {
+        data: newArr 
+      }
+    })
+  }
+
+  render() {
+    return (
+      <AppBlock>
         <AppHeader/>
         <div className="search-panel d-flex">
           <SearchPanel/>
           <PostStatusFilter/>
         </div>
-        <PostList posts={data}/>
-        <PostAddForm/>
-      </StyledAppBlock>
+        <PostList 
+          posts={this.state.data}
+          onDelete={this.deleteItem}
+        />
+        <PostAddForm onAdd={this.addItem}/>
+      </AppBlock>
   )
+  }
 }
-
-export default App;

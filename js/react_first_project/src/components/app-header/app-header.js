@@ -10,7 +10,6 @@ const Header = styled.div`
 
   h1 {
     font-size: 26px;
-    color: ${props => props.colored ? 'red' : 'black'}
   }
 
   h2 {
@@ -18,6 +17,8 @@ const Header = styled.div`
     color: grey;
   }
 `;
+
+//в h1 (можно юзать условия) color: ${props => props.colored ? 'red' : 'black'}
 
 const AppHeader = () => {
   return (
