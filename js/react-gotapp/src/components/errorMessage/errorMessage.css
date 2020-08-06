@@ -1,0 +1,13 @@
+.random-block {
+  text-align: center;
+}
+.random-block img {
+  width: 100%;
+}
+.random-block .error-text {
+  display: inline-block;
+  margin: 0 auto;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: red;
+}
