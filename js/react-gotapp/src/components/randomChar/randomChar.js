@@ -8,7 +8,7 @@ import ErrorMessage from '../errorMessage';
 const RandomBlock = styled.div`
     background-color: #fff;
     padding: 25px 25px 15px 25px;
-    margin-bottom: 40px;
+    margin: 10px 0 40px 0;
     h4 {
         margin-bottom: 20px;
         text-align: center;
@@ -24,17 +24,21 @@ const RandomBlock = styled.div`
 
 
 export default class RandomChar extends Component {
-    constructor() {
-        super();
-        this.updateChar();
-    }
-
 
     gotService = new gotService();
 
     state = {
         char: {},
         loading: true
+    }
+
+    componentDidMount() {
+        this.updateChar();
+        this.timerId = setInterval(this.updateChar, 4000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerId);
     }
 
     onCharLoaded = (char) => {
@@ -52,7 +56,7 @@ export default class RandomChar extends Component {
         })
     }
 
-    updateChar() {
+    updateChar = () => {
         const id = Math.floor(Math.random() * 140 + 1); //1-140
         this.gotService.getCharacter(id)
             .then(this.onCharLoaded)
