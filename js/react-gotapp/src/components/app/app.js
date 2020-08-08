@@ -7,7 +7,8 @@ import CharDetails from '../charDetails';
 
 export default class App extends Component {
     state = {
-        visible: true
+        visible: true,
+        selectedChar: 130
     }
 
     onHide = () => {
@@ -18,10 +19,16 @@ export default class App extends Component {
         })
     }
 
+    onCharSelected = (id) => {
+        this.setState({
+            selectedChar: id
+        })
+    }
+
     render() {
         const char = this.state.visible ? <RandomChar/> : null;
         const textHideBtn = this.state.visible ? 'Hide Random Character Block' : 'Show Random Character Block';
-        
+
         return (
             <> 
                 <Container>
@@ -36,10 +43,10 @@ export default class App extends Component {
                     </Row>
                     <Row>
                         <Col md='6'>
-                            <ItemList />
+                            <ItemList onCharSelected={this.onCharSelected}/>
                         </Col>
                         <Col md='6'>
-                            <CharDetails />
+                            <CharDetails charId={this.state.selectedChar}/>
                         </Col>
                     </Row>
                 </Container>
