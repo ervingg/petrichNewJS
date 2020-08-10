@@ -1,13 +1,19 @@
-.random-block {
-  text-align: center;
+.error-wrapper {
+  position: relative;
 }
-.random-block img {
+
+img {
   width: 100%;
 }
-.random-block .error-text {
-  display: inline-block;
-  margin: 0 auto;
+.error-text {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
   font-weight: 700;
+  text-align: center;
   text-transform: uppercase;
+  font-size: 25px;
   color: red;
 }
