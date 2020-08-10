@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './charDetails.css';
 import gotService from '../../services/gotService';
 import styled from 'styled-components';
+import Spinner from '../spinner';
+import ErrorMessage from '../errorMessage';
 
 const CharDetailsBlock = styled.div`
     background-color: #fff;
@@ -11,6 +13,9 @@ const CharDetailsBlock = styled.div`
         margin-bottom: 20px;
         text-align: center;
     }
+    .select-error {
+        color: #000;
+    }
 `;
 
 export default class CharDetails extends Component {
@@ -18,7 +23,9 @@ export default class CharDetails extends Component {
     gotService = new gotService();
 
     state = {
-        char: null
+        char: null,
+        error: false,
+        loading: true
     }
 
     componentDidMount() {
@@ -31,6 +38,19 @@ export default class CharDetails extends Component {
         }
     }
 
+    componentDidCatch() {
+        this.setState({
+            error: true
+        })
+    }
+    
+    onCharDetailsLoaded = (char) => {
+        this.setState({
+            char,
+            loading: false
+        })
+    }
+
     updateChar() {
         const {charId} = this.props;
 
@@ -38,19 +58,44 @@ export default class CharDetails extends Component {
             return;
         }
 
+        this.setState({
+            loading: true
+        })
+
         this.gotService.getCharacter(charId)
-            .then((char) => {
-                this.setState({char})
-            })
+            .then(this.onCharDetailsLoaded)
+            .catch(() => this.onError())
     }
+
+    onError() {
+        this.setState({
+            char: null,
+            error: true
+        })
+    }
+
 
     render() {
 
-        if (!this.state.char) {
-            return <span className="select-error">Please select a character</span>
+        if (!this.state.char && this.state.error) {
+            return <ErrorMessage/>
+        } else if (!this.state.char) {
+            return (
+                <CharDetailsBlock className="rounded">
+                    <span className="select-error">Please select a character</span>
+                </CharDetailsBlock>
+            ) 
         }
 
         const {name, gender, born, died, culture} = this.state.char;
+
+        if (this.state.loading) {
+            return (
+                <CharDetailsBlock className="rounded">
+                    <Spinner/>
+                </CharDetailsBlock>
+            )
+        }
 
         return (
             <CharDetailsBlock className="rounded">
