@@ -44,14 +44,14 @@ export default class ItemList extends Component {
 
     //renderItems принимает массив потому что из API нам приходит array
     renderItems(arr) {
-        return arr.map((item) => {
-            const {id, name} = item;
-            console.log(id);
+        return arr.map((item, i) => {
+            const {name} = item;
+            var shortid = require('shortid');
             return (
                 <ListGroupItem
-                    key={id}
+                    key={shortid.generate()}
                     className="list-group-item"
-                    onClick={() => this.props.onCharSelected(id)}
+                    onClick={() => this.props.onCharSelected(41 + i)}
                     >
                     {name}
                 </ListGroupItem>
