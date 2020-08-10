@@ -12,8 +12,6 @@ export default class CharacterPage extends Component {
   }
 
   componentDidCatch() {
-    console.log('Error');
-
     this.setState({
         error: true
     })
@@ -34,9 +32,7 @@ export default class CharacterPage extends Component {
     return (
       <Row>
           <Col md='6'>
-              <ItemList 
-                onCharSelected={this.onCharSelected}
-                onToggleSpinner={this.onToggleSpinner}/>
+              <ItemList onCharSelected={this.onCharSelected}/>
           </Col>
           <Col md='6'>
               <CharDetails charId={this.state.selectedChar}/>
