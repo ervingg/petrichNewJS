@@ -4,8 +4,14 @@ import Header from '../header';
 import RandomChar from '../randomChar';
 import ErrorMessage from '../errorMessage';
 import CharacterPage from '../characterPage';
+import ItemList from '../itemList';
+import CharDetails from '../charDetails';
+import gotService from '../../services/gotService';
 
 export default class App extends Component {
+
+    gotService = new gotService();
+
     state = {
         visible: true,
         error: false
@@ -41,7 +47,11 @@ export default class App extends Component {
                 <Container>
                     <Row>
                         <Col lg={{size: 5, offset: 0}}>
-                            <button className="btn btn-danger hide-random-char-btn" onClick={this.onHide}>{textHideBtn}</button>
+                            <button 
+                                className="btn btn-danger hide-random-char-btn" 
+                                onClick={this.onHide}>
+                                    {textHideBtn}
+                            </button>
                             {char}
                         </Col>
                     </Row>
