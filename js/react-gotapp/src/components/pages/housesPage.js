@@ -42,11 +42,9 @@ export default class HousesPage extends Component {
       <ItemDetails 
         itemId={this.state.selectedHouse}
         item='House'>
-        <Field field='name' label='Name'/>
         <Field field='region' label='Region'/>
         <Field field='words' label='Words'/>
         <Field field='titles' label='Titles'/>
-        <Field field='overlord' label='Overlord'/>
         <Field field='ancestralWeapons' label='Ancestral Weapons'/>
       </ItemDetails>
     )

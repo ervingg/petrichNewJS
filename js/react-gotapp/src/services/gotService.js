@@ -49,10 +49,10 @@ export default class GotService {
   }
 
   isSet(data) {
-    if (data) {
-      return data 
-    } else {
+    if (!data || data.length <= 1) {
       return 'no data'
+    } else {
+      return data
     }
   }
 
@@ -73,13 +73,14 @@ export default class GotService {
   }
 
   _transformHouse = (house) => {
+    console.log(house.titles);
+    console.log(house.words);
     return {
       id: this._extractId(house),
       name: this.isSet(house.name),
       region: this.isSet(house.region),
       words: this.isSet(house.words),
       titles: this.isSet(house.titles),
-      overlord: this.isSet(house.overlord),
       ancestralWeapons: this.isSet(house.ancestralWeapons)
     }
   }
