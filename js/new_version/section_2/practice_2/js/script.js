@@ -84,17 +84,3 @@ document.addEventListener('DOMContentLoaded', function () {
     sortArr(movieDB.movies);
     createMovieList(movieList, movieDB.movies);
 });
-
-
-
-
-
-
-
-
-
-// movieList.innerHTML += `
-//             <li class="promo__interactive-item">${++i}. ${addInput.value.substring(0, 21)}...
-//                 <div class="delete"></div>
-//             </li>
-//         `;
