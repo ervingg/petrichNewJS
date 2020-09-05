@@ -3,6 +3,8 @@ import React from 'react';
 import './app-header.css';
 import styled from 'styled-components';
 
+const userName = prompt('Whats your name?', '');
+
 const Header = styled.div`
   display: flex;
   align-items: flex-end;
@@ -22,7 +24,7 @@ const Header = styled.div`
 const AppHeader = ({liked, allPosts}) => {
   return (
     <Header colored>
-      <h1>Ervin Khamoido</h1>
+      <h1>{userName}</h1>
       <h2>{allPosts} posts, like {liked}</h2>
     </Header>
   )
